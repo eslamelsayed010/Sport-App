@@ -10,13 +10,14 @@
 		22B0B88A2DD3AEED00243611 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0B8892DD3AEED00243611 /* AppDelegate.swift */; };
 		22B0B88C2DD3AEED00243611 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0B88B2DD3AEED00243611 /* SceneDelegate.swift */; };
 		22B0B88E2DD3AEED00243611 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0B88D2DD3AEED00243611 /* ViewController.swift */; };
-		22B0B8912DD3AEED00243611 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22B0B88F2DD3AEED00243611 /* Main.storyboard */; };
 		22B0B8942DD3AEED00243611 /* Sport_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22B0B8922DD3AEED00243611 /* Sport_App.xcdatamodeld */; };
 		22B0B8962DD3AEEE00243611 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22B0B8952DD3AEEE00243611 /* Assets.xcassets */; };
 		22B0B8992DD3AEEE00243611 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22B0B8972DD3AEEE00243611 /* LaunchScreen.storyboard */; };
 		22B0B8A42DD3AEEF00243611 /* Sport_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0B8A32DD3AEEF00243611 /* Sport_AppTests.swift */; };
 		22B0B8AE2DD3AEEF00243611 /* Sport_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0B8AD2DD3AEEF00243611 /* Sport_AppUITests.swift */; };
 		22B0B8B02DD3AEEF00243611 /* Sport_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0B8AF2DD3AEEF00243611 /* Sport_AppUITestsLaunchTests.swift */; };
+		22B0B8BF2DD3AFBF00243611 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0B8BD2DD3AFBF00243611 /* HomeViewController.swift */; };
+		22B0B8C02DD3AFBF00243611 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22B0B8BE2DD3AFBF00243611 /* HomeViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +42,6 @@
 		22B0B8892DD3AEED00243611 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22B0B88B2DD3AEED00243611 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		22B0B88D2DD3AEED00243611 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		22B0B8902DD3AEED00243611 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		22B0B8932DD3AEED00243611 /* Sport_App.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Sport_App.xcdatamodel; sourceTree = "<group>"; };
 		22B0B8952DD3AEEE00243611 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22B0B8982DD3AEEE00243611 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +51,8 @@
 		22B0B8A92DD3AEEF00243611 /* Sport AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sport AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22B0B8AD2DD3AEEF00243611 /* Sport_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sport_AppUITests.swift; sourceTree = "<group>"; };
 		22B0B8AF2DD3AEEF00243611 /* Sport_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sport_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		22B0B8BD2DD3AFBF00243611 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		22B0B8BE2DD3AFBF00243611 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,10 +103,10 @@
 		22B0B8882DD3AEED00243611 /* Sport App */ = {
 			isa = PBXGroup;
 			children = (
+				22B0B8BC2DD3AF8A00243611 /* Home View */,
 				22B0B8892DD3AEED00243611 /* AppDelegate.swift */,
 				22B0B88B2DD3AEED00243611 /* SceneDelegate.swift */,
 				22B0B88D2DD3AEED00243611 /* ViewController.swift */,
-				22B0B88F2DD3AEED00243611 /* Main.storyboard */,
 				22B0B8952DD3AEEE00243611 /* Assets.xcassets */,
 				22B0B8972DD3AEEE00243611 /* LaunchScreen.storyboard */,
 				22B0B89A2DD3AEEE00243611 /* Info.plist */,
@@ -128,6 +130,15 @@
 				22B0B8AF2DD3AEEF00243611 /* Sport_AppUITestsLaunchTests.swift */,
 			);
 			path = "Sport AppUITests";
+			sourceTree = "<group>";
+		};
+		22B0B8BC2DD3AF8A00243611 /* Home View */ = {
+			isa = PBXGroup;
+			children = (
+				22B0B8BD2DD3AFBF00243611 /* HomeViewController.swift */,
+				22B0B8BE2DD3AFBF00243611 /* HomeViewController.xib */,
+			);
+			path = "Home View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,7 +247,7 @@
 			files = (
 				22B0B8992DD3AEEE00243611 /* LaunchScreen.storyboard in Resources */,
 				22B0B8962DD3AEEE00243611 /* Assets.xcassets in Resources */,
-				22B0B8912DD3AEED00243611 /* Main.storyboard in Resources */,
+				22B0B8C02DD3AFBF00243611 /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22B0B8BF2DD3AFBF00243611 /* HomeViewController.swift in Sources */,
 				22B0B88E2DD3AEED00243611 /* ViewController.swift in Sources */,
 				22B0B88A2DD3AEED00243611 /* AppDelegate.swift in Sources */,
 				22B0B8942DD3AEED00243611 /* Sport_App.xcdatamodeld in Sources */,
@@ -301,14 +313,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		22B0B88F2DD3AEED00243611 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				22B0B8902DD3AEED00243611 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		22B0B8972DD3AEEE00243611 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -450,7 +454,6 @@
 				INFOPLIST_FILE = "Sport App/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -477,7 +480,6 @@
 				INFOPLIST_FILE = "Sport App/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
