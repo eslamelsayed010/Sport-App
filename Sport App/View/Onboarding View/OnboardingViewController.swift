@@ -9,6 +9,13 @@ import UIKit
 
 class OnboardingViewController: UIViewController {
 
+    
+    @IBAction func exploreBtn(_ sender: Any) {
+        let homeView = HomeViewController(nibName: "HomeViewController", bundle: nil)
+        homeView.modalTransitionStyle = .crossDissolve
+        homeView.modalPresentationStyle = .fullScreen
+        self.present(homeView, animated: true, completion: nil)
+    }
     @IBOutlet weak var label: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
