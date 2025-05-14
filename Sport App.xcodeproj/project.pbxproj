@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22284F422DD3F8400022D4DD /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22284F402DD3F8400022D4DD /* SplashViewController.swift */; };
+		22284F432DD3F8400022D4DD /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22284F412DD3F8400022D4DD /* SplashViewController.xib */; };
+		22284F492DD406D10022D4DD /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 22284F482DD406D10022D4DD /* Lottie */; };
+		22284F4B2DD406D10022D4DD /* Lottie-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 22284F4A2DD406D10022D4DD /* Lottie-Dynamic */; };
+		2273A0B02DD4D69A006E5F7C /* splash.json in Resources */ = {isa = PBXBuildFile; fileRef = 2273A0AF2DD4D69A006E5F7C /* splash.json */; };
+		2273A0BB2DD4D964006E5F7C /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2273A0B92DD4D963006E5F7C /* OnboardingViewController.swift */; };
+		2273A0BC2DD4D964006E5F7C /* OnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2273A0BA2DD4D963006E5F7C /* OnboardingViewController.xib */; };
+		2273A0BE2DD4E00B006E5F7C /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2273A0BD2DD4E00B006E5F7C /* UIColor.swift */; };
 		22B0B88A2DD3AEED00243611 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0B8892DD3AEED00243611 /* AppDelegate.swift */; };
 		22B0B88C2DD3AEED00243611 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0B88B2DD3AEED00243611 /* SceneDelegate.swift */; };
 		22B0B88E2DD3AEED00243611 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0B88D2DD3AEED00243611 /* ViewController.swift */; };
@@ -38,6 +46,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		22284F402DD3F8400022D4DD /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		22284F412DD3F8400022D4DD /* SplashViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
+		2273A0AF2DD4D69A006E5F7C /* splash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = splash.json; path = ../../../Downloads/splash.json; sourceTree = "<group>"; };
+		2273A0B92DD4D963006E5F7C /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		2273A0BA2DD4D963006E5F7C /* OnboardingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingViewController.xib; sourceTree = "<group>"; };
+		2273A0BD2DD4E00B006E5F7C /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		22B0B8862DD3AEED00243611 /* Sport App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sport App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22B0B8892DD3AEED00243611 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22B0B88B2DD3AEED00243611 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +74,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22284F492DD406D10022D4DD /* Lottie in Frameworks */,
+				22284F4B2DD406D10022D4DD /* Lottie-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +96,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22284F452DD405050022D4DD /* Splash View */ = {
+			isa = PBXGroup;
+			children = (
+				22284F402DD3F8400022D4DD /* SplashViewController.swift */,
+				22284F412DD3F8400022D4DD /* SplashViewController.xib */,
+			);
+			path = "Splash View";
+			sourceTree = "<group>";
+		};
+		2273A0B52DD4D812006E5F7C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2273A0B62DD4D84B006E5F7C /* Onboarding View */,
+				22B0B8BC2DD3AF8A00243611 /* Home View */,
+				22284F452DD405050022D4DD /* Splash View */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2273A0B62DD4D84B006E5F7C /* Onboarding View */ = {
+			isa = PBXGroup;
+			children = (
+				2273A0B92DD4D963006E5F7C /* OnboardingViewController.swift */,
+				2273A0BA2DD4D963006E5F7C /* OnboardingViewController.xib */,
+			);
+			path = "Onboarding View";
+			sourceTree = "<group>";
+		};
 		22B0B87D2DD3AEED00243611 = {
 			isa = PBXGroup;
 			children = (
@@ -103,7 +147,8 @@
 		22B0B8882DD3AEED00243611 /* Sport App */ = {
 			isa = PBXGroup;
 			children = (
-				22B0B8BC2DD3AF8A00243611 /* Home View */,
+				2273A0B52DD4D812006E5F7C /* View */,
+				2273A0AF2DD4D69A006E5F7C /* splash.json */,
 				22B0B8892DD3AEED00243611 /* AppDelegate.swift */,
 				22B0B88B2DD3AEED00243611 /* SceneDelegate.swift */,
 				22B0B88D2DD3AEED00243611 /* ViewController.swift */,
@@ -111,6 +156,7 @@
 				22B0B8972DD3AEEE00243611 /* LaunchScreen.storyboard */,
 				22B0B89A2DD3AEEE00243611 /* Info.plist */,
 				22B0B8922DD3AEED00243611 /* Sport_App.xcdatamodeld */,
+				2273A0BD2DD4E00B006E5F7C /* UIColor.swift */,
 			);
 			path = "Sport App";
 			sourceTree = "<group>";
@@ -157,6 +203,10 @@
 			dependencies = (
 			);
 			name = "Sport App";
+			packageProductDependencies = (
+				22284F482DD406D10022D4DD /* Lottie */,
+				22284F4A2DD406D10022D4DD /* Lottie-Dynamic */,
+			);
 			productName = "Sport App";
 			productReference = 22B0B8862DD3AEED00243611 /* Sport App.app */;
 			productType = "com.apple.product-type.application";
@@ -229,6 +279,9 @@
 				Base,
 			);
 			mainGroup = 22B0B87D2DD3AEED00243611;
+			packageReferences = (
+				22284F442DD404F30022D4DD /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = 22B0B8872DD3AEED00243611 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -248,6 +301,9 @@
 				22B0B8992DD3AEEE00243611 /* LaunchScreen.storyboard in Resources */,
 				22B0B8962DD3AEEE00243611 /* Assets.xcassets in Resources */,
 				22B0B8C02DD3AFBF00243611 /* HomeViewController.xib in Resources */,
+				22284F432DD3F8400022D4DD /* SplashViewController.xib in Resources */,
+				2273A0B02DD4D69A006E5F7C /* splash.json in Resources */,
+				2273A0BC2DD4D964006E5F7C /* OnboardingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +331,9 @@
 				22B0B8BF2DD3AFBF00243611 /* HomeViewController.swift in Sources */,
 				22B0B88E2DD3AEED00243611 /* ViewController.swift in Sources */,
 				22B0B88A2DD3AEED00243611 /* AppDelegate.swift in Sources */,
+				22284F422DD3F8400022D4DD /* SplashViewController.swift in Sources */,
+				2273A0BB2DD4D964006E5F7C /* OnboardingViewController.swift in Sources */,
+				2273A0BE2DD4E00B006E5F7C /* UIColor.swift in Sources */,
 				22B0B8942DD3AEED00243611 /* Sport_App.xcdatamodeld in Sources */,
 				22B0B88C2DD3AEED00243611 /* SceneDelegate.swift in Sources */,
 			);
@@ -607,6 +666,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		22284F442DD404F30022D4DD /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		22284F482DD406D10022D4DD /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22284F442DD404F30022D4DD /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		22284F4A2DD406D10022D4DD /* Lottie-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22284F442DD404F30022D4DD /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = "Lottie-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		22B0B8922DD3AEED00243611 /* Sport_App.xcdatamodeld */ = {
