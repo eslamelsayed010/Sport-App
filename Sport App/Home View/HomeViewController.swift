@@ -25,10 +25,6 @@ class HomeViewController: UIViewController, UITabBarDelegate {
     func tabBar(_ tabBarView: UITabBar, didSelect item: UITabBarItem) {
         print("Selected item: \(item.title ?? "")")
     }
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        collectionView?.frame = view.bounds
-//    }
     
     func setupLayout() {
         layout.scrollDirection = .vertical
@@ -40,7 +36,6 @@ class HomeViewController: UIViewController, UITabBarDelegate {
     
     func setupCollectionView(){
         collectionView?.collectionViewLayout = layout
-        //collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView?.register(HomeCollectionViewCell.nib(), forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
         collectionView?.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier)
         collectionView?.delegate = self
@@ -54,7 +49,6 @@ class HomeViewController: UIViewController, UITabBarDelegate {
 extension HomeViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        
         print("DONEE")
     }
 }

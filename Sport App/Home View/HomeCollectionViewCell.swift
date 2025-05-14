@@ -35,25 +35,15 @@ class HomeCollectionViewCell: UICollectionViewCell {
     }
 
     public func configure(with image: UIImage, text: String, bg: UIColor?) {
-        // Remove corner radius setting from here
-//        imageView.clipsToBounds = true
-//        imageView.contentMode = .scaleAspectFill
-//        imageView.layer.masksToBounds = true
-//        // Don't set cornerRadius here
-//        imageView.backgroundColor = .clear
         imageView.image = image
         backgroundColor = bg
         sportLabel.text = text
-//        sportLabel.textColor = .white
-//        sportLabel.textAlignment = .center
-//        sportLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-        print("Setting label text to: \(text)")
     }
 
     override func prepareForReuse() {
         super.prepareForReuse()
         imageView.image = nil
-        sportLabel.text = nil // Also reset the label
+        sportLabel.text = nil
     }
     
     static func nib() -> UINib {
