@@ -6,3 +6,8 @@
 //
 
 import Foundation
+import UIKit
+
+extension UIColor {
+    static let exploreButtonColor = UIColor(named: "#246BFD")
+}

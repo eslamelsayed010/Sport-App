@@ -39,7 +39,7 @@ class SplashViewController: UIViewController {
 
 
     func goToMainApp() {
-        let mainVC = HomeViewController(nibName: "HomeViewController", bundle: nil)
+        let mainVC = OnboardingViewController(nibName: "OnboardingViewController", bundle: nil)
         mainVC.modalTransitionStyle = .crossDissolve
         mainVC.modalPresentationStyle = .fullScreen
         self.present(mainVC, animated: true, completion: nil)

@@ -9,8 +9,16 @@ import UIKit
 
 class OnboardingViewController: UIViewController {
 
+    @IBOutlet weak var label: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor(red: 24/255, green: 24/255, blue: 41/255, alpha: 1.0)
+        
+    
+        label.font = UIFont(name: "HelveticaNeue-Bold", size: 40)
+       
+
+        label.font = UIFont.systemFont(ofSize: 40, weight: .semibold)
 
         // Do any additional setup after loading the view.
     }
