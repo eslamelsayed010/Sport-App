@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct LeagueModel{
+    var name:String?
+    var image:String?
+}

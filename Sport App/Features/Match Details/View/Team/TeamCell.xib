@@ -40,7 +40,7 @@
                 <outlet property="TeamName" destination="bKo-dm-QhN" id="xbh-y7-mRB"/>
                 <outlet property="teamLogo" destination="esJ-Zs-Guc" id="0aC-h4-GXH"/>
             </connections>
-            <point key="canvasLocation" x="-20" y="36"/>
+            <point key="canvasLocation" x="-21.374045801526716" y="35.563380281690144"/>
         </collectionViewCell>
     </objects>
     <resources>

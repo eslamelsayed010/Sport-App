@@ -72,7 +72,15 @@ class LeagueDetailsCollectionView: UICollectionViewController {
             case 0:
                 return collectionView.dequeueReusableCell(withReuseIdentifier: "UpcomingMatchCell", for: indexPath) as! UpcomingMatchCell
             case 1:
-                return collectionView.dequeueReusableCell(withReuseIdentifier: "TeamCell", for: indexPath) as! TeamCell
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamCell", for: indexPath) as! TeamCell
+                cell.onImageTapped = {
+                    let teamVC = TeamViewController(nibName: "TeamViewController", bundle: nil)
+                    teamVC.modalTransitionStyle = .crossDissolve
+                    teamVC.modalPresentationStyle = .fullScreen
+                    self.present(teamVC, animated: true, completion: nil)
+                }
+                return cell
+
             case 2:
                 return collectionView.dequeueReusableCell(withReuseIdentifier: "EventCell", for: indexPath) as! EventCell
             default:
@@ -126,11 +134,12 @@ class LeagueDetailsCollectionView: UICollectionViewController {
                 let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(150),
                                                        heightDimension: .absolute(170))
                 let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-
+                
                 let section = NSCollectionLayoutSection(group: group)
                 section.orthogonalScrollingBehavior = .continuous
                 section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 12, bottom: 16, trailing: 12)
                 section.boundarySupplementaryItems = [sectionHeader]
+                
                 return section
 
             default:

@@ -26,8 +26,12 @@
                         <constraint firstAttribute="height" constant="49" id="vsg-0h-BbM"/>
                     </constraints>
                     <items>
-                        <tabBarItem title="Home" image="house.lodge" catalog="system" id="kVR-KY-ntQ"/>
-                        <tabBarItem title="Favorites" image="star.fill" catalog="system" id="Xej-Xv-Vp9"/>
+                        <tabBarItem title="Home" image="house.lodge" catalog="system" id="kVR-KY-ntQ">
+                            <color key="badgeColor" red="0.94901961089999998" green="0.94901961089999998" blue="0.94901961089999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </tabBarItem>
+                        <tabBarItem title="Favorites" image="star.fill" catalog="system" id="Xej-Xv-Vp9">
+                            <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </tabBarItem>
                     </items>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="barTintColor" red="0.094359330830000004" green="0.094448961319999997" blue="0.15946596860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -55,7 +59,7 @@
                 <constraint firstItem="1hb-dO-G09" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="eUx-n7-KkP"/>
                 <constraint firstItem="1hb-dO-G09" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="jp7-RR-WD6"/>
             </constraints>
-            <point key="canvasLocation" x="19" y="-18"/>
+            <point key="canvasLocation" x="17.557251908396946" y="-18.30985915492958"/>
         </view>
     </objects>
     <resources>

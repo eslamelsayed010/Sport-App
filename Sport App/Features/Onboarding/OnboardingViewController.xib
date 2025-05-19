@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OnboardingViewController" customModule="Sport_App" customModuleProvider="target">
             <connections>
+                <outlet property="exploreButton" destination="6bp-Hs-cBY" id="b5f-eZ-yYs"/>
                 <outlet property="label" destination="Ffi-rp-Hj0" id="KOB-vl-307"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -43,6 +44,7 @@ Wait for what? Let’s get start it!</string>
                     <color key="tintColor" name="AccentColor"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="filled" title="Explore">
+                        <backgroundConfiguration key="background" cornerRadius="15"/>
                         <color key="baseBackgroundColor" red="0.31240566730000002" green="0.26784032619999998" blue="0.85948967210000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </buttonConfiguration>
                     <connections>

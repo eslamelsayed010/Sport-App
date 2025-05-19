@@ -8,16 +8,40 @@
 import UIKit
 
 class LeagueTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var leagueImage: UIImageView!
+    
+    @IBOutlet weak var leagueName: UILabel!
+    static let idintefire = "LeagueTableViewCell"
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        let horizontalInset: CGFloat = 16
+        let verticalInset: CGFloat = 8
+
+        let insetFrame = contentView.frame.inset(by: UIEdgeInsets(
+            top: verticalInset,
+            left: horizontalInset,
+            bottom: verticalInset,
+            right: horizontalInset
+        ))
+
+        contentView.frame = insetFrame
+
+        contentView.layer.cornerRadius = 20
+        contentView.layer.masksToBounds = true
+        contentView.backgroundColor = UIColor(red: 43/255, green: 43/255, blue: 61/255, alpha: 1.0)
+    }
+
+
+
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }

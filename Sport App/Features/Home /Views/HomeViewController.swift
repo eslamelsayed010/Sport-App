@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITabBarDelegate {
+class HomeViewController: UIViewController {
     @IBOutlet weak var tabBar: UITabBar!
     let sports = ["football", "basketball", "tennis", "baseball"]
     
@@ -19,11 +19,11 @@ class HomeViewController: UIViewController, UITabBarDelegate {
         
         setupLayout()
         setupCollectionView()
+        
         tabBar.delegate = self
-        //view.addSubview(collectionView!)
-    }
-    func tabBar(_ tabBarView: UITabBar, didSelect item: UITabBarItem) {
-        print("Selected item: \(item.title ?? "")")
+        if let homeItem = tabBar.items?.first {
+            tabBar.selectedItem = homeItem
+        }
     }
     
     func setupLayout() {
@@ -46,10 +46,25 @@ class HomeViewController: UIViewController, UITabBarDelegate {
     
 }
 
+extension HomeViewController: UITabBarDelegate{
+    func tabBar(_ tabBarView: UITabBar, didSelect item: UITabBarItem) {
+        if let index = tabBarView.items?.firstIndex(of: item), index == 1 {
+            let favVC = FavoriteViewController(nibName: "FavoriteViewController", bundle: nil)
+            favVC.modalTransitionStyle = .crossDissolve
+            favVC.modalPresentationStyle = .fullScreen
+            self.present(favVC, animated: true, completion: nil)
+        }
+    }
+}
+
 extension HomeViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        print("DONEE")
+        
+        let league = LeaguesViewController(nibName: "LeaguesViewController", bundle: nil)
+        league.modalTransitionStyle = .crossDissolve
+        league.modalPresentationStyle = .fullScreen
+        self.present(league, animated: true, completion: nil)
     }
 }
 
@@ -61,6 +76,7 @@ extension HomeViewController: UICollectionViewDataSource{
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         var customBackgroundColor = UIColor(red: 36/255.0, green: 30/255.0, blue: 50/255.0, alpha: 1.0)
         
         if indexPath.row == 0 || indexPath.row == 3{
