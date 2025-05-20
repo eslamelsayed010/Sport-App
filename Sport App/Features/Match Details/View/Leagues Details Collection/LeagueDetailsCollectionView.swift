@@ -9,16 +9,39 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class LeagueDetailsCollectionView: UICollectionViewController {
+class LeagueDetailsCollectionView: UICollectionViewController , LeagueDetailsViewProtocol{
+    func showUpcomingMatches(_ matches: [Match]) {
+        self.upcomingMatches = matches
+            DispatchQueue.main.async {
+                self.collectionView.reloadSections(IndexSet(integer: 0))
+            }
+    }
+    
+    func showRecentMatches(_ matches: [Match]) {
+        self.recentMatches = matches
+        DispatchQueue.main.async {
+            self.collectionView.reloadSections(IndexSet(integer: 2))
+        }
+    }
+
+
+    
+    func showError(_ message: String) {
+        return
+    }
+    
+    
+    var selectedSport: Sport!
+    var selectedLeagueId: Int!
+    var presenter: LeagueDetailsPresenterProtocol!
+    var upcomingMatches: [Match] = []
+    var recentMatches: [Match] = []
+
     
     let sectionTitles = ["Upcoming Match", "Teams", "Events"]
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
         collectionView.backgroundColor = UIColor(red: 24/255, green: 24/255, blue: 41/255, alpha: 1.0)
 
                 self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
@@ -31,19 +54,12 @@ class LeagueDetailsCollectionView: UICollectionViewController {
                                         withReuseIdentifier: SectionHeaderView.reuseIdentifier)
                 
                 collectionView.collectionViewLayout = createLayout()
+        
+        presenter = LeagueDetailsPresenter(view: self, sport: selectedSport, leagueId: selectedLeagueId)
+            presenter.fetchMatches()
 
-        // Do any additional setup after loading the view.
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: UICollectionViewDataSource
 
@@ -57,11 +73,11 @@ class LeagueDetailsCollectionView: UICollectionViewController {
         // #warning Incomplete implementation, return the number of items
         switch section {
           case 0:
-              return 1
+              return upcomingMatches.isEmpty ? 0 : 1
           case 1:
               return 5
           case 2:
-              return 7
+            return recentMatches.count
           default:
               return 0
           }
@@ -70,7 +86,11 @@ class LeagueDetailsCollectionView: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
             case 0:
-                return collectionView.dequeueReusableCell(withReuseIdentifier: "UpcomingMatchCell", for: indexPath) as! UpcomingMatchCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UpcomingMatchCell", for: indexPath) as! UpcomingMatchCell
+                if indexPath.item == 0, let match = upcomingMatches.first {
+                    cell.configure(with: match)
+                }
+                return cell
             case 1:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamCell", for: indexPath) as! TeamCell
                 cell.onImageTapped = {
@@ -81,26 +101,63 @@ class LeagueDetailsCollectionView: UICollectionViewController {
                 }
                 return cell
 
-            case 2:
-                return collectionView.dequeueReusableCell(withReuseIdentifier: "EventCell", for: indexPath) as! EventCell
+        case 2:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EventCell", for: indexPath) as! EventCell
+            let match = recentMatches[indexPath.item]
+            cell.team1.text = match.event_home_team ?? "-"
+            cell.team2.text = match.event_away_team ?? "-"
+            cell.matchScore.text = "\(match.event_final_result ?? " ")"
+
+            if let logo1 = match.home_team_logo, !logo1.isEmpty {
+                cell.team1Img.loadImage(from: logo1)
+            } else {
+                cell.team1Img.image = UIImage(named: "noImage")
+            }
+
+            if let logo2 = match.away_team_logo, !logo2.isEmpty {
+                cell.team2Img.loadImage(from: logo2)
+            } else {
+                cell.team2Img.image = UIImage(named: "noImage")
+            }
+
+            return cell
+
             default:
                 return UICollectionViewCell()
             }
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String,
-                                    at indexPath: IndexPath) -> UICollectionReusableView {
-           if kind == UICollectionView.elementKindSectionHeader {
-               let header = collectionView.dequeueReusableSupplementaryView(
-                   ofKind: kind,
-                   withReuseIdentifier: SectionHeaderView.reuseIdentifier,
-                   for: indexPath
-               ) as! SectionHeaderView
-               header.titleLabel.text = sectionTitles[indexPath.section]
-               return header
-           }
-           return UICollectionReusableView()
-       }
+                                 at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(
+            ofKind: kind,
+            withReuseIdentifier: SectionHeaderView.reuseIdentifier,
+            for: indexPath
+        ) as! SectionHeaderView
+
+        let shouldShowHeader: Bool = {
+            switch indexPath.section {
+            case 0:
+                return !upcomingMatches.isEmpty
+            case 2:
+                return !recentMatches.isEmpty
+            default:
+                return true
+            }
+        }()
+
+        if shouldShowHeader {
+            header.titleLabel.text = sectionTitles[indexPath.section]
+            header.isHidden = false
+        } else {
+            header.titleLabel.text = nil
+            header.isHidden = true
+        }
+
+        return header
+    }
+
+
     
     func createLayout() -> UICollectionViewCompositionalLayout {
         return UICollectionViewCompositionalLayout { sectionIndex, environment in
@@ -160,39 +217,6 @@ class LeagueDetailsCollectionView: UICollectionViewController {
         }
     }
 
-
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
-    
 }
 
 class SectionHeaderView: UICollectionReusableView {
