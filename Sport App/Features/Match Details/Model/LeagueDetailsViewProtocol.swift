@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+
+protocol LeagueDetailsViewProtocol: AnyObject {
+    func showUpcomingMatches(_ matches: [Match])
+    func showRecentMatches(_ matches: [Match])
+    func showError(_ message: String)
+}

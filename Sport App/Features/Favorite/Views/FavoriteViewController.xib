@@ -45,6 +45,7 @@
                     <rect key="frame" x="0.0" y="99" width="393" height="670"/>
                     <color key="backgroundColor" red="0.10015303640000001" green="0.07780150324" blue="0.1599806547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="tintColor" red="0.10015303640000001" green="0.07780150324" blue="0.1599806547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="separatorColor" red="0.0082290777940000007" green="0.046078689399999997" blue="0.16436040399999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="sectionIndexColor" red="0.10015303640000001" green="0.07780150324" blue="0.1599806547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="sectionIndexBackgroundColor" red="0.10015303640000001" green="0.07780150324" blue="0.1599806547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="sectionIndexTrackingBackgroundColor" red="0.10015303640000001" green="0.07780150324" blue="0.1599806547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

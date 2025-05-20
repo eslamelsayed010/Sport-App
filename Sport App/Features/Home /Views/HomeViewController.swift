@@ -58,14 +58,28 @@ extension HomeViewController: UITabBarDelegate{
 }
 
 extension HomeViewController: UICollectionViewDelegate{
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        
-        let league = LeaguesViewController(nibName: "LeaguesViewController", bundle: nil)
-        league.modalTransitionStyle = .crossDissolve
-        league.modalPresentationStyle = .fullScreen
-        self.present(league, animated: true, completion: nil)
+
+        let sport: Sport
+        switch indexPath.row {
+        case 0: sport = .football
+        case 1: sport = .basketball
+        case 2: sport = .tennis
+        case 3: sport = .cricket
+        default: sport = .football
+        }
+
+        print("Selected sport: \(sport.rawValue)") 
+
+        let leagueVC = LeaguesViewController(nibName: "LeaguesViewController", bundle: nil)
+        leagueVC.selectedSport = sport 
+        leagueVC.modalTransitionStyle = .crossDissolve
+        leagueVC.modalPresentationStyle = .fullScreen
+        self.present(leagueVC, animated: true, completion: nil)
     }
+
 }
 
 extension HomeViewController: UICollectionViewDataSource{

@@ -18,14 +18,6 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="DhX-wN-ynY">
-                    <rect key="frame" x="0.0" y="97" width="393" height="755"/>
-                    <color key="backgroundColor" red="0.094359330830000004" green="0.094448961319999997" blue="0.15946596860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="722" id="AEp-2G-e9u"/>
-                    </constraints>
-                </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Leagues" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmN-LT-uC3">
                     <rect key="frame" x="150" y="59" width="92" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -45,6 +37,14 @@
                         <action selector="arrowBack:" destination="-1" eventType="touchUpInside" id="krc-oK-6FW"/>
                     </connections>
                 </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="DhX-wN-ynY">
+                    <rect key="frame" x="0.0" y="97" width="393" height="755"/>
+                    <color key="backgroundColor" red="0.094359330830000004" green="0.094448961319999997" blue="0.15946596860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="722" id="AEp-2G-e9u"/>
+                    </constraints>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="0.13382038469999999" green="0.13207617399999999" blue="0.1948241889" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

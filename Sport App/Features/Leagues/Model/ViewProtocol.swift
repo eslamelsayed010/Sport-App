@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+protocol LeaguesViewProtocol: AnyObject {
+    func showLeagues(_ leagues: [League])
+    func showError(_ message: String)
+}
