@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct TeamResult: Codable {
+    let result: [TeamModel]
+}
