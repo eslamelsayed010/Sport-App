@@ -70,17 +70,33 @@ extension FavoriteViewController: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if CheckInternet.connection() {
+            navToDetailsView(indexPath: indexPath.row)
+        }else{
+            showInternetAlert()
+        }
+
+    }
+    
+    func showInternetAlert() {
+        let alert = UIAlertController(
+            title: "No Internet Connection",
+            message: "Please check your internet connection and try again.",
+            preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func navToDetailsView(indexPath: Int){
         let detailVC = LeagueDetailsCollectionView(nibName: "LeagueDetailsCollectionView", bundle: nil)
             detailVC.modalTransitionStyle = .crossDissolve
             detailVC.modalPresentationStyle = .fullScreen
-        
-          let sport = Sport(rawValue: leagues[indexPath.row].sport ?? "football") ?? .football
-
-        
+          let sport = Sport(rawValue: leagues[indexPath].sport ?? "football") ?? .football
             detailVC.selectedSport = sport
-            detailVC.selectedLeagueId = leagues[indexPath.row].id ?? 0
-            detailVC.selectedLeagueName = leagues[indexPath.row].name ?? "D.N"
-            detailVC.selectedLeagueImage = leagues[indexPath.row].image ?? "D.N"
+            detailVC.selectedLeagueId = leagues[indexPath].id ?? 0
+            detailVC.selectedLeagueName = leagues[indexPath].name ?? "D.N"
+            detailVC.selectedLeagueImage = leagues[indexPath].image ?? "D.N"
         self.present(detailVC, animated: true, completion: nil)
     }
 }
