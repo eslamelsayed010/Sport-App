@@ -8,6 +8,12 @@
 import UIKit
 
 class UpcomingMatchCell: UICollectionViewCell {
+    var onBackButtonTapped: (() -> Void)?
+    
+    @IBAction func arrowBack(_ sender: Any) {
+        onBackButtonTapped?()
+    }
+    
     @IBOutlet weak var matchTime: UILabel!
     @IBOutlet weak var Team2Name: UILabel!
     

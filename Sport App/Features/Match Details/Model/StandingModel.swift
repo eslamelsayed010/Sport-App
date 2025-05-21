@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct StandingModel: Codable {
+    let team_key: Int?
+    let standing_team: String?
+    let team_logo: String?
+}

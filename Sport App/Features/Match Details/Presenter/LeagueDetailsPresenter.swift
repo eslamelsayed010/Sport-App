@@ -86,6 +86,15 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
             }
         }
         
+        NetworkManager.shared.fetchLeagueStanding(for: sport, leagueId: leagueId) { [weak self] result in
+            switch result {
+            case .success(let standings):
+                self?.view?.showLeagueStanding(standings)
+                
+            case .failure(let error):
+                self?.view?.showError(error.localizedDescription)
+            }
+        }
         
     }
 }

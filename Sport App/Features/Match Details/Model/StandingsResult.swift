@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+struct StandingsResult: Codable{
+    let result: Total
+}
+
+struct Total: Codable{
+    let total: [StandingModel]
+}

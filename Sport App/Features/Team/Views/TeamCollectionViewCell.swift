@@ -13,7 +13,7 @@ class TeamCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var playerImage: UIImageView!
     
-    @IBOutlet weak var playerNationalty: UILabel!
+//    @IBOutlet weak var playerNationalty: UILabel!
     @IBOutlet weak var playerPosition: UILabel!
     @IBOutlet weak var playerNumber: UILabel!
     @IBOutlet weak var playerName: UILabel!
@@ -34,8 +34,8 @@ class TeamCollectionViewCell: UICollectionViewCell {
         playerPosition.numberOfLines = 0
         playerPosition.lineBreakMode = .byWordWrapping
 
-        playerNationalty.numberOfLines = 0
-        playerNationalty.lineBreakMode = .byWordWrapping
+//        playerNationalty.numberOfLines = 0
+//        playerNationalty.lineBreakMode = .byWordWrapping
     }
 
     

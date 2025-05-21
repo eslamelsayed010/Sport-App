@@ -8,6 +8,12 @@
 import UIKit
 
 class TeamViewController: UIViewController {
+    var teamId: Int!
+    var selectedSport: Sport!
+    
+    var teamModel: TeamModel?
+    var presenter: TeamPresenterProtocol!
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     let layout = UICollectionViewFlowLayout()
@@ -17,11 +23,13 @@ class TeamViewController: UIViewController {
         setupLayout()
         setupCollectionView()
         
+        presenter = TeamPresenter(view: self, sport: selectedSport, teamId: teamId)
+        presenter.fetchTeams()
     }
     
     func setupLayout() {
         layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 16, bottom: 20, right: 16)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 16, bottom: 20, right: 16)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 10
 
@@ -48,14 +56,20 @@ class TeamViewController: UIViewController {
 
 extension TeamViewController: UICollectionViewDataSource, UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 15
+        return teamModel?.players?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TeamCollectionViewCell.identifier, for: indexPath) as! TeamCollectionViewCell
         
-        cell.playerImage.layer.cornerRadius = cell.playerImage.frame.height / 2
+        let player = teamModel?.players?[indexPath.row]
         
+        cell.playerImage.layer.cornerRadius = cell.playerImage.frame.height / 2
+        cell.playerImage.loadImage(from: player?.player_image ?? "noImage")
+        cell.playerName.text = player?.player_name ?? "D.N"
+//        cell.playerNationalty.text = player?.player_country ?? "DN"
+        cell.playerNumber.text = player?.player_number ?? "D.N"
+        cell.playerPosition.text = player?.player_type ?? "D.N"
         cell.configure()
         
         return cell
@@ -70,7 +84,10 @@ extension TeamViewController: UICollectionViewDelegateFlowLayout{
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderTeamCollectionReusableView.identifier, for: indexPath) as! HeaderTeamCollectionReusableView
         
         
-        header.configure(with: UIImage(named: "arsenal")!, name: "Arsenal")
+        header.configure(with: UIImage(named: "noImage")!, name: "Loading")
+        
+        header.clubImage.loadImage(from: teamModel?.team_logo ?? "noImage")
+        header.clubName.text = teamModel?.team_name
         
         header.onBackButtonTapped = { [weak self] in
             self?.dismiss(animated: true, completion: nil)
@@ -80,7 +97,22 @@ extension TeamViewController: UICollectionViewDelegateFlowLayout{
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: view.frame.size.width , height: 350)
+        return CGSize(width: view.frame.size.width , height: 335)
     }
+    
+}
+
+extension TeamViewController: TeamViewProtocol{
+    func showTeam(_ Team: [TeamModel]) {
+        self.teamModel = Team.first
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+    }
+    
+    func showError(_ message: String) {
+        print(message)
+    }
+    
     
 }

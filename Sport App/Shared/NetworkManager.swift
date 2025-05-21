@@ -38,5 +38,31 @@ class NetworkManager {
         }
     }
 
+    func fetchLeagueStanding(for sport: Sport, leagueId: Int, completion: @escaping (Result<[StandingModel], Error>) -> Void) {
+        let url = "https://apiv2.allsportsapi.com/\(sport.rawValue)/?&met=Standings&leagueId=\(leagueId)&APIkey=\(APIKeys.main)"
+        
+        AF.request(url).responseDecodable(of: StandingsResult.self) { response in
+            switch response.result {
+            case .success(let standingsResponse):
+                completion(.success(standingsResponse.result.total))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+    func fetchTeamPlayers(for sport: Sport, teamId: Int, completion: @escaping (Result<[TeamModel], Error>) -> Void) {
+        let url = "https://apiv2.allsportsapi.com/\(sport.rawValue)/?&met=Teams&teamId=\(teamId)&APIkey=\(APIKeys.main)"
+        
+        AF.request(url).responseDecodable(of: TeamResult.self) { response in
+            switch response.result {
+            case .success(let teamResponse):
+                completion(.success(teamResponse.result))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
     
 }

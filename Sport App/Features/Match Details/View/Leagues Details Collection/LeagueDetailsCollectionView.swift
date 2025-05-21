@@ -10,10 +10,18 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class LeagueDetailsCollectionView: UICollectionViewController , LeagueDetailsViewProtocol{
+    
     func showUpcomingMatches(_ matches: [Match]) {
         self.upcomingMatches = matches
             DispatchQueue.main.async {
                 self.collectionView.reloadSections(IndexSet(integer: 0))
+            }
+    }
+    
+    func showLeagueStanding(_ standing: [StandingModel]) {
+        self.leagueStandings = standing
+            DispatchQueue.main.async {
+                self.collectionView.reloadSections(IndexSet(integer: 1))
             }
     }
     
@@ -23,8 +31,6 @@ class LeagueDetailsCollectionView: UICollectionViewController , LeagueDetailsVie
             self.collectionView.reloadSections(IndexSet(integer: 2))
         }
     }
-
-
     
     func showError(_ message: String) {
         return
@@ -36,9 +42,10 @@ class LeagueDetailsCollectionView: UICollectionViewController , LeagueDetailsVie
     var presenter: LeagueDetailsPresenterProtocol!
     var upcomingMatches: [Match] = []
     var recentMatches: [Match] = []
+    var leagueStandings: [StandingModel] = []
 
     
-    let sectionTitles = ["Upcoming Match", "Teams", "Events"]
+    let sectionTitles = ["", "Teams", "Events"]
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -70,12 +77,12 @@ class LeagueDetailsCollectionView: UICollectionViewController , LeagueDetailsVie
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
+        
         switch section {
           case 0:
               return upcomingMatches.isEmpty ? 0 : 1
           case 1:
-              return 5
+            return leagueStandings.count
           case 2:
             return recentMatches.count
           default:
@@ -90,11 +97,19 @@ class LeagueDetailsCollectionView: UICollectionViewController , LeagueDetailsVie
                 if indexPath.item == 0, let match = upcomingMatches.first {
                     cell.configure(with: match)
                 }
+                cell.onBackButtonTapped = { [weak self] in
+                    self?.dismiss(animated: true, completion: nil)
+                }
                 return cell
             case 1:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamCell", for: indexPath) as! TeamCell
+                let standings = leagueStandings[indexPath.item]
+                cell.teamLogo.loadImage(from: standings.team_logo ?? "noImage")
+                cell.TeamName.text = standings.standing_team
                 cell.onImageTapped = {
                     let teamVC = TeamViewController(nibName: "TeamViewController", bundle: nil)
+                    teamVC.teamId = standings.team_key
+                    teamVC.selectedSport = self.selectedSport
                     teamVC.modalTransitionStyle = .crossDissolve
                     teamVC.modalPresentationStyle = .fullScreen
                     self.present(teamVC, animated: true, completion: nil)
