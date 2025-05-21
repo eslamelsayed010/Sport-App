@@ -10,6 +10,19 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class LeagueDetailsCollectionView: UICollectionViewController , LeagueDetailsViewProtocol{
+    func addToFavorite() {
+        print("League added to favorites.")
+    }
+    func removeFromFavorite() {
+        print("League removed from favorites.")
+    }
+    func showFavoriteStatus(isFavorite: Bool) {
+        self.isFavorite = isFavorite
+        collectionView.reloadData() 
+    }
+
+    
+    var isFavorite: Bool = false
     
     func showUpcomingMatches(_ matches: [Match]) {
         self.upcomingMatches = matches
@@ -39,6 +52,8 @@ class LeagueDetailsCollectionView: UICollectionViewController , LeagueDetailsVie
     
     var selectedSport: Sport!
     var selectedLeagueId: Int!
+    var selectedLeagueName: String?
+    var selectedLeagueImage: String?
     var presenter: LeagueDetailsPresenterProtocol!
     var upcomingMatches: [Match] = []
     var recentMatches: [Match] = []
@@ -46,9 +61,11 @@ class LeagueDetailsCollectionView: UICollectionViewController , LeagueDetailsVie
 
     
     let sectionTitles = ["", "Teams", "Events"]
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         collectionView.backgroundColor = UIColor(red: 24/255, green: 24/255, blue: 41/255, alpha: 1.0)
 
                 self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
@@ -62,8 +79,15 @@ class LeagueDetailsCollectionView: UICollectionViewController , LeagueDetailsVie
                 
                 collectionView.collectionViewLayout = createLayout()
         
-        presenter = LeagueDetailsPresenter(view: self, sport: selectedSport, leagueId: selectedLeagueId)
-            presenter.fetchMatches()
+        presenter = LeagueDetailsPresenter(
+            view: self,
+            sport: selectedSport,
+            leagueId: selectedLeagueId,
+            leagueName: selectedLeagueName,
+            leagueImage: selectedLeagueImage
+        )
+        presenter.fetchMatches()
+        presenter.checkIfFavorite()
 
     }
 
@@ -93,13 +117,32 @@ class LeagueDetailsCollectionView: UICollectionViewController , LeagueDetailsVie
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
             case 0:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UpcomingMatchCell", for: indexPath) as! UpcomingMatchCell
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UpcomingMatchCell", for: indexPath) as! UpcomingMatchCell
                 if indexPath.item == 0, let match = upcomingMatches.first {
                     cell.configure(with: match)
+                    cell.updateFavoriteIcon(isFavorite: self.isFavorite)
+
                 }
+            
                 cell.onBackButtonTapped = { [weak self] in
                     self?.dismiss(animated: true, completion: nil)
                 }
+            
+            cell.onFavoriteButtonTapped = { [weak self] in
+                guard let self = self else { return }
+
+                if self.isFavorite {
+                    self.presenter.removeFromFavorites()
+                    self.showToast(message: "Removed from favorites")
+                } else {
+                    self.presenter.addToFavorites()
+                    self.showToast(message: "Added to favorites")
+                }
+                self.isFavorite.toggle()
+                cell.updateFavoriteIcon(isFavorite: self.isFavorite)
+            }
+
+
                 return cell
             case 1:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamCell", for: indexPath) as! TeamCell
@@ -257,4 +300,34 @@ class SectionHeaderView: UICollectionReusableView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+extension LeagueDetailsCollectionView{
+    func showToast(message: String, duration: Double = 2.0) {
+        let toastLabel = UILabel(frame: CGRect(x: 20,
+                                               y: self.view.frame.size.height - 120,
+                                               width: self.view.frame.size.width - 40,
+                                               height: 35))
+        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        toastLabel.textColor = UIColor.white
+        toastLabel.textAlignment = .center
+        toastLabel.font = UIFont.systemFont(ofSize: 14)
+        toastLabel.text = message
+        toastLabel.alpha = 0.0
+        toastLabel.layer.cornerRadius = 10
+        toastLabel.clipsToBounds = true
+
+        self.view.addSubview(toastLabel)
+
+        UIView.animate(withDuration: 0.5, animations: {
+            toastLabel.alpha = 1.0
+        }) { _ in
+            UIView.animate(withDuration: 0.5, delay: duration, options: .curveEaseOut, animations: {
+                toastLabel.alpha = 0.0
+            }) { _ in
+                toastLabel.removeFromSuperview()
+            }
+        }
+    }
+
 }

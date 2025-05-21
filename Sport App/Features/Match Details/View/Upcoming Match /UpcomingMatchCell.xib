@@ -33,13 +33,13 @@
                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="100" id="ii2-MJ-KxE"/>
                         </constraints>
                     </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="idezia 1" translatesAutoresizingMaskIntoConstraints="NO" id="7pz-iF-71L">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noImage" translatesAutoresizingMaskIntoConstraints="NO" id="7pz-iF-71L">
                         <rect key="frame" x="48.666666666666657" y="77.666666666666671" width="60" height="72.000000000000014"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="72" id="63z-SO-0BP"/>
                         </constraints>
                     </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="idezia" translatesAutoresizingMaskIntoConstraints="NO" id="exs-hz-MhQ">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noImage" translatesAutoresizingMaskIntoConstraints="NO" id="exs-hz-MhQ">
                         <rect key="frame" x="300.66666666666669" y="77.666666666666671" width="72" height="72.000000000000014"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="72" id="BHb-tH-a9a"/>
@@ -66,7 +66,7 @@
                         <color key="textColor" systemColor="underPageBackgroundColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Arsenal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HwI-7f-Ftd">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="club 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HwI-7f-Ftd">
                         <rect key="frame" x="32" y="172.33333333333334" width="93" height="31.666666666666657"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="93" id="e0x-6M-Y0P"/>
@@ -91,13 +91,16 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s61-bc-eml">
-                        <rect key="frame" x="365" y="0.33333333333333215" width="52" height="35"/>
+                        <rect key="frame" x="365" y="0.66666666666666785" width="52" height="34.333333333333329"/>
                         <color key="tintColor" red="0.9187460542" green="0.43207031489999997" blue="0.29420703650000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" image="star.fill" catalog="system"/>
+                        <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                        <connections>
+                            <action selector="favoriteBtn:" destination="gTV-IL-0wX" eventType="touchUpInside" id="7sd-KR-n5u"/>
+                        </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Arsenal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySg-Ob-r3K">
-                        <rect key="frame" x="308" y="177.66666666666666" width="57" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="club 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySg-Ob-r3K">
+                        <rect key="frame" x="313.33333333333331" y="177.66666666666666" width="46.666666666666686" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -136,6 +139,7 @@
             <size key="customSize" width="437" height="319"/>
             <connections>
                 <outlet property="Team2Name" destination="ySg-Ob-r3K" id="vAb-cI-pkc"/>
+                <outlet property="favoriteButton" destination="s61-bc-eml" id="Afp-77-DMQ"/>
                 <outlet property="matchTime" destination="nfl-AI-zET" id="JKw-up-Ltn"/>
                 <outlet property="team1Img" destination="7pz-iF-71L" id="nCo-WB-bmD"/>
                 <outlet property="team1Name" destination="HwI-7f-Ftd" id="LEU-ta-Pgm"/>
@@ -147,9 +151,8 @@
     <resources>
         <image name="arrow.left" catalog="system" width="128" height="95"/>
         <image name="circle" width="64" height="64"/>
-        <image name="idezia" width="22" height="22"/>
-        <image name="idezia 1" width="22" height="22"/>
-        <image name="star.fill" catalog="system" width="128" height="116"/>
+        <image name="noImage" width="2000" height="2000"/>
+        <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="underPageBackgroundColor">
             <color red="0.70980392156862748" green="0.71764705882352942" blue="0.74117647058823533" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

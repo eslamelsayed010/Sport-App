@@ -6,9 +6,14 @@
 //
 
 import Foundation
+import UIKit
+import CoreData
 
 protocol LeagueDetailsPresenterProtocol {
     func fetchMatches()
+    func addToFavorites()
+    func removeFromFavorites()
+    func checkIfFavorite()
 }
 
 
@@ -17,11 +22,16 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
     weak var view: LeagueDetailsViewProtocol?
     let sport: Sport
     let leagueId: Int
-    
-    init(view: LeagueDetailsViewProtocol, sport: Sport, leagueId: Int) {
+    var leagueName: String?
+    var leagueImage: String?
+    var isFavorite: Bool = false
+
+    init(view: LeagueDetailsViewProtocol, sport: Sport, leagueId: Int, leagueName: String?, leagueImage: String?) {
         self.view = view
         self.sport = sport
         self.leagueId = leagueId
+        self.leagueName = leagueName
+        self.leagueImage = leagueImage
     }
     
     func fetchMatches() {
@@ -95,6 +105,71 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
                 self?.view?.showError(error.localizedDescription)
             }
         }
-        
     }
+    
+    
+    func addToFavorites() {
+           guard let leagueName = leagueName, let leagueImage = leagueImage else { return }
+
+           let appDelegate = UIApplication.shared.delegate as! AppDelegate
+           let context = appDelegate.persistentContainer.viewContext
+
+           let entity = NSEntityDescription.entity(forEntityName: "LeagueCoreData", in: context)
+           let league = NSManagedObject(entity: entity!, insertInto: context)
+
+           league.setValue(leagueId, forKey: "id")
+           league.setValue(leagueName, forKey: "name")
+           league.setValue(leagueImage, forKey: "image")
+           league.setValue(sport.rawValue, forKey: "sport")
+
+           do {
+               try context.save()
+               isFavorite = true
+               view?.addToFavorite()
+           } catch {
+               view?.showError("Failed to add to favorites")
+           }
+       }
+
+       func removeFromFavorites() {
+           let appDelegate = UIApplication.shared.delegate as! AppDelegate
+           let context = appDelegate.persistentContainer.viewContext
+
+           let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "LeagueCoreData")
+           fetchRequest.predicate = NSPredicate(format: "id == %d", leagueId)
+
+           do {
+               let results = try context.fetch(fetchRequest)
+               for object in results {
+                   if let objectToDelete = object as? NSManagedObject {
+                       context.delete(objectToDelete)
+                   }
+               }
+               try context.save()
+               isFavorite = false
+               view?.removeFromFavorite()
+           } catch {
+               view?.showError("Failed to remove from favorites")
+           }
+       }
+
+    func checkIfFavorite() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "LeagueCoreData")
+        fetchRequest.predicate = NSPredicate(format: "id == %d", leagueId)
+
+        do {
+            let results = try context.fetch(fetchRequest)
+            isFavorite = !results.isEmpty
+            view?.showFavoriteStatus(isFavorite: isFavorite)
+        } catch {
+            isFavorite = false
+            view?.showFavoriteStatus(isFavorite: false)
+            view?.showError("Failed to check favorite status")
+        }
+    }
+
+    
 }

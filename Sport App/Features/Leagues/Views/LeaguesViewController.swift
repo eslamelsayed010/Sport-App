@@ -67,6 +67,8 @@ extension LeaguesViewController: UITableViewDataSource, UITableViewDelegate {
             
             detailVC.selectedSport = selectedSport
             detailVC.selectedLeagueId = leagues[indexPath.row].leagueKey
+            detailVC.selectedLeagueName = leagues[indexPath.row].leagueName ?? "D.N"
+            detailVC.selectedLeagueImage = leagues[indexPath.row].leagueLogo ?? "D.N"
         self.present(detailVC, animated: true, completion: nil)
     }
 }

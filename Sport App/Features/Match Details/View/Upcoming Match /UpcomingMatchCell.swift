@@ -9,7 +9,14 @@ import UIKit
 
 class UpcomingMatchCell: UICollectionViewCell {
     var onBackButtonTapped: (() -> Void)?
+    var onFavoriteButtonTapped: (() -> Void)?
     
+    @IBAction func favoriteBtn(_ sender: Any) {
+        onFavoriteButtonTapped?()
+    }
+    
+    @IBOutlet weak var favoriteButton: UIButton!
+
     @IBAction func arrowBack(_ sender: Any) {
         onBackButtonTapped?()
     }
@@ -68,4 +75,12 @@ class UpcomingMatchCell: UICollectionViewCell {
         }
     }
 
+}
+
+extension UpcomingMatchCell{
+    func updateFavoriteIcon(isFavorite: Bool) {
+        let imageName = isFavorite ? "star.fill" : "star"
+        favoriteButton.setImage(UIImage(systemName: imageName), for: .normal)
+        favoriteButton.tintColor = isFavorite ? .yellow : .white
+    }
 }

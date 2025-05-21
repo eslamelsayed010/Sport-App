@@ -28,9 +28,6 @@ class TeamCollectionViewCell: UICollectionViewCell {
         playerName.numberOfLines = 0
         playerName.lineBreakMode = .byWordWrapping
 
-        playerNumber.numberOfLines = 0
-        playerNumber.lineBreakMode = .byWordWrapping
-
         playerPosition.numberOfLines = 0
         playerPosition.lineBreakMode = .byWordWrapping
 

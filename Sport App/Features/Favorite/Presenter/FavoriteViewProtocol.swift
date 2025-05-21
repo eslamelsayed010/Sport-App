@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+protocol FavoriteViewProtocol: AnyObject{
+    func fetchFavorites(_ favorites: [FavoriteModel])
+    func removeFromFavorite()
+}
