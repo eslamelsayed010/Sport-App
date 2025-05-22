@@ -67,6 +67,8 @@
 		22CE33042DDE62FF00252094 /* FavoritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CE33032DDE62FF00252094 /* FavoritePresenter.swift */; };
 		22CE33062DDE631700252094 /* FavoriteViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CE33052DDE631700252094 /* FavoriteViewProtocol.swift */; };
 		22CE33082DDE6DE600252094 /* CheckInternet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CE33072DDE6DE600252094 /* CheckInternet.swift */; };
+		22CEC1E42DDFA77900CBF15C /* NetworkRequesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CEC1E32DDFA77900CBF15C /* NetworkRequesting.swift */; };
+		22CEC1E62DDFA8A900CBF15C /* MockNetworkRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CEC1E52DDFA8A900CBF15C /* MockNetworkRequester.swift */; };
 		22D1A8742DDB759F00B10ADB /* LeaguesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D1A8732DDB759F00B10ADB /* LeaguesPresenter.swift */; };
 		22D1A8762DDB75C500B10ADB /* ViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D1A8752DDB75C500B10ADB /* ViewProtocol.swift */; };
 		22D1A8792DDC666D00B10ADB /* MatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D1A8782DDC666D00B10ADB /* MatchModel.swift */; };
@@ -152,6 +154,8 @@
 		22CE33032DDE62FF00252094 /* FavoritePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePresenter.swift; sourceTree = "<group>"; };
 		22CE33052DDE631700252094 /* FavoriteViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewProtocol.swift; sourceTree = "<group>"; };
 		22CE33072DDE6DE600252094 /* CheckInternet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInternet.swift; sourceTree = "<group>"; };
+		22CEC1E32DDFA77900CBF15C /* NetworkRequesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequesting.swift; sourceTree = "<group>"; };
+		22CEC1E52DDFA8A900CBF15C /* MockNetworkRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkRequester.swift; sourceTree = "<group>"; };
 		22D1A8732DDB759F00B10ADB /* LeaguesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LeaguesPresenter.swift; path = "Sport App/Features/Leagues/Presenter/LeaguesPresenter.swift"; sourceTree = SOURCE_ROOT; };
 		22D1A8752DDB75C500B10ADB /* ViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProtocol.swift; sourceTree = "<group>"; };
 		22D1A8782DDC666D00B10ADB /* MatchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchModel.swift; sourceTree = "<group>"; };
@@ -334,6 +338,7 @@
 			children = (
 				22A918212DDB6F5B0064CE8D /* NetworkManager.swift */,
 				22CE33072DDE6DE600252094 /* CheckInternet.swift */,
+				22CEC1E32DDFA77900CBF15C /* NetworkRequesting.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -375,6 +380,7 @@
 			isa = PBXGroup;
 			children = (
 				22B0B8A32DD3AEEF00243611 /* Sport_AppTests.swift */,
+				22CEC1E52DDFA8A900CBF15C /* MockNetworkRequester.swift */,
 			);
 			path = "Sport AppTests";
 			sourceTree = "<group>";
@@ -691,6 +697,7 @@
 				22D1A8762DDB75C500B10ADB /* ViewProtocol.swift in Sources */,
 				22CE33042DDE62FF00252094 /* FavoritePresenter.swift in Sources */,
 				228C58732DDA626C00D7A5D5 /* TeamCell.swift in Sources */,
+				22CEC1E42DDFA77900CBF15C /* NetworkRequesting.swift in Sources */,
 				22D1A87E2DDC6A5600B10ADB /* LeagueDetailsViewProtocol.swift in Sources */,
 				221F3CC72DDA3CE800C9C6E5 /* FavoriteTableViewCell.swift in Sources */,
 				22D1A8792DDC666D00B10ADB /* MatchModel.swift in Sources */,
@@ -727,6 +734,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22B0B8A42DD3AEEF00243611 /* Sport_AppTests.swift in Sources */,
+				22CEC1E62DDFA8A900CBF15C /* MockNetworkRequester.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
