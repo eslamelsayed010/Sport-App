@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 class TeamViewController: UIViewController {
     var teamId: Int!
@@ -15,15 +16,19 @@ class TeamViewController: UIViewController {
     var presenter: TeamPresenterProtocol!
     
     @IBOutlet weak var collectionView: UICollectionView!
+    var customIndicator: NVActivityIndicatorView!
     
     let layout = UICollectionViewFlowLayout()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupCustomLoader()
+        
         setupLayout()
         setupCollectionView()
         
         presenter = TeamPresenter(view: self, sport: selectedSport, teamId: teamId)
+        customIndicator.startAnimating()
         presenter.fetchTeams()
     }
     
@@ -36,6 +41,15 @@ class TeamViewController: UIViewController {
         let screenWidth = UIScreen.main.bounds.width
         let totalHorizontalPadding: CGFloat = 16 + 16
         layout.itemSize = CGSize(width: screenWidth - totalHorizontalPadding, height: 100)
+    }
+    
+    func setupCustomLoader() {
+        let size: CGFloat = 50
+        customIndicator = NVActivityIndicatorView(frame: CGRect(x: (view.frame.width - size)/2,y: (view.frame.height - size)/2,width: size,height: size),
+                                                  type: .ballRotate,
+                                                  color: .white,
+                                                  padding: 0)
+        view.addSubview(customIndicator)
     }
 
     
@@ -107,10 +121,14 @@ extension TeamViewController: TeamViewProtocol{
         self.teamModel = Team.first
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
+                self.customIndicator.stopAnimating()
             }
     }
     
     func showError(_ message: String) {
+        DispatchQueue.main.async {
+            self.customIndicator.stopAnimating()
+        }
         print(message)
     }
     

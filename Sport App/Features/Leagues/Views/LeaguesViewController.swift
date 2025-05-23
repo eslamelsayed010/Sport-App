@@ -6,11 +6,15 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 class LeaguesViewController: UIViewController {
+    var filteredLeagues: [League] = []
+    var isSearching: Bool = false
 
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
+    var customIndicator: NVActivityIndicatorView!
     
     // MARK: - Properties
     var leagues: [League] = []
@@ -25,10 +29,12 @@ class LeaguesViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupCustomLoader()
+        
         presenter = LeaguesPresenter(view: self)
+        customIndicator.startAnimating()
         presenter.fetchLeagues(for: selectedSport)
-
+        
         setupTableView()
     }
 
@@ -38,21 +44,41 @@ class LeaguesViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(UINib(nibName: LeagueTableViewCell.idintefire, bundle: nil),
                            forCellReuseIdentifier: LeagueTableViewCell.idintefire)
+
+        if let headerView = Bundle.main.loadNibNamed("HeaderSearchCollectionReusableView", owner: nil, options: nil)?.first as? HeaderSearchCollectionReusableView {
+            
+            headerView.searchBar.delegate = self
+            headerView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 60)
+            
+            tableView.tableHeaderView = headerView
+        }
     }
+    
+    func setupCustomLoader() {
+        let size: CGFloat = 50
+        customIndicator = NVActivityIndicatorView(frame: CGRect(x: (view.frame.width - size)/2,y: (view.frame.height - size)/2,width: size,height: size),
+                                                  type: .ballRotate,
+                                                  color: .white,
+                                                  padding: 0)
+        view.addSubview(customIndicator)
+    }
+
+
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension LeaguesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return leagues.count
+        return isSearching ? filteredLeagues.count : leagues.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: LeagueTableViewCell.idintefire, for: indexPath) as! LeagueTableViewCell
-        let league = leagues[indexPath.row]
+        let league = isSearching ? filteredLeagues[indexPath.row] : leagues[indexPath.row]
         cell.configure(with: league)
         return cell
     }
+
 
 
 
@@ -76,13 +102,39 @@ extension LeaguesViewController: UITableViewDataSource, UITableViewDelegate {
 // MARK: - LeaguesViewProtocol
 extension LeaguesViewController: LeaguesViewProtocol {
     func showLeagues(_ leagues: [League]) {
-        self.leagues = leagues
         DispatchQueue.main.async {
+            self.customIndicator.stopAnimating()
+            self.leagues = leagues
+            self.filteredLeagues = leagues
             self.tableView.reloadData()
         }
     }
 
     func showError(_ message: String) {
+        DispatchQueue.main.async {
+            self.customIndicator.stopAnimating()
+        }
         print("Error: \(message)")
     }
 }
+
+extension LeaguesViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            isSearching = false
+            filteredLeagues = leagues
+        } else {
+            isSearching = true
+            filteredLeagues = leagues.filter {
+                $0.leagueName?.lowercased().contains(searchText.lowercased()) ?? false
+            }
+        }
+        tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+}
+

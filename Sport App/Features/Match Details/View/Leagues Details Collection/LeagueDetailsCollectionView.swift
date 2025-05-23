@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 private let reuseIdentifier = "Cell"
 
@@ -18,15 +19,27 @@ class LeagueDetailsCollectionView: UICollectionViewController , LeagueDetailsVie
     }
     func showFavoriteStatus(isFavorite: Bool) {
         self.isFavorite = isFavorite
-        collectionView.reloadData() 
+        collectionView.reloadData()
+        customIndicator.stopAnimating()
     }
 
     
     var isFavorite: Bool = false
+    var customIndicator: NVActivityIndicatorView!
+    
+    func setupCustomLoader() {
+        let size: CGFloat = 50
+        customIndicator = NVActivityIndicatorView(frame: CGRect(x: (view.frame.width - size)/2,y: (view.frame.height - size)/2,width: size,height: size),
+                                                  type: .ballRotate,
+                                                  color: .white,
+                                                  padding: 0)
+        view.addSubview(customIndicator)
+    }
     
     func showUpcomingMatches(_ matches: [Match]) {
         self.upcomingMatches = matches
             DispatchQueue.main.async {
+                self.customIndicator.stopAnimating()
                 self.collectionView.reloadSections(IndexSet(integer: 0))
             }
     }
@@ -34,6 +47,7 @@ class LeagueDetailsCollectionView: UICollectionViewController , LeagueDetailsVie
     func showLeagueStanding(_ standing: [StandingModel]) {
         self.leagueStandings = standing
             DispatchQueue.main.async {
+                self.customIndicator.stopAnimating()
                 self.collectionView.reloadSections(IndexSet(integer: 1))
             }
     }
@@ -41,11 +55,16 @@ class LeagueDetailsCollectionView: UICollectionViewController , LeagueDetailsVie
     func showRecentMatches(_ matches: [Match]) {
         self.recentMatches = matches
         DispatchQueue.main.async {
+            self.customIndicator.stopAnimating()
             self.collectionView.reloadSections(IndexSet(integer: 2))
         }
     }
     
     func showError(_ message: String) {
+        DispatchQueue.main.async {
+            self.customIndicator.stopAnimating()
+            print(message)
+        }
         return
     }
     
@@ -65,6 +84,7 @@ class LeagueDetailsCollectionView: UICollectionViewController , LeagueDetailsVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupCustomLoader()
         
         collectionView.backgroundColor = UIColor(red: 24/255, green: 24/255, blue: 41/255, alpha: 1.0)
 
@@ -86,6 +106,7 @@ class LeagueDetailsCollectionView: UICollectionViewController , LeagueDetailsVie
             leagueName: selectedLeagueName,
             leagueImage: selectedLeagueImage
         )
+        customIndicator.startAnimating()
         presenter.fetchMatches()
         presenter.checkIfFavorite()
 

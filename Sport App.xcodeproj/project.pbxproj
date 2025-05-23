@@ -21,6 +21,10 @@
 		22284F432DD3F8400022D4DD /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22284F412DD3F8400022D4DD /* SplashViewController.xib */; };
 		22284F492DD406D10022D4DD /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 22284F482DD406D10022D4DD /* Lottie */; };
 		22284F4B2DD406D10022D4DD /* Lottie-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 22284F4A2DD406D10022D4DD /* Lottie-Dynamic */; };
+		223387052DE07D3400BC2CDD /* HeaderSearchCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223387032DE07D3400BC2CDD /* HeaderSearchCollectionReusableView.swift */; };
+		223387062DE07D3400BC2CDD /* HeaderSearchCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 223387042DE07D3400BC2CDD /* HeaderSearchCollectionReusableView.xib */; };
+		2233870A2DE08DE900BC2CDD /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 223387092DE08DE900BC2CDD /* NVActivityIndicatorView */; };
+		2233870C2DE08DE900BC2CDD /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = 2233870B2DE08DE900BC2CDD /* NVActivityIndicatorViewExtended */; };
 		2253DED02DDCD9FA00E8B20C /* StandingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2253DECF2DDCD9FA00E8B20C /* StandingModel.swift */; };
 		2253DED22DDCDBC400E8B20C /* StandingsResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2253DED12DDCDBC400E8B20C /* StandingsResult.swift */; };
 		2253DED42DDCF35F00E8B20C /* TeamModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2253DED32DDCF35F00E8B20C /* TeamModel.swift */; };
@@ -106,6 +110,8 @@
 		222497382DD5051F00A0408C /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
 		22284F402DD3F8400022D4DD /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		22284F412DD3F8400022D4DD /* SplashViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
+		223387032DE07D3400BC2CDD /* HeaderSearchCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSearchCollectionReusableView.swift; sourceTree = "<group>"; };
+		223387042DE07D3400BC2CDD /* HeaderSearchCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderSearchCollectionReusableView.xib; sourceTree = "<group>"; };
 		2253DECF2DDCD9FA00E8B20C /* StandingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingModel.swift; sourceTree = "<group>"; };
 		2253DED12DDCDBC400E8B20C /* StandingsResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingsResult.swift; sourceTree = "<group>"; };
 		2253DED32DDCF35F00E8B20C /* TeamModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeamModel.swift; path = "Sport App/Features/Team/Model/TeamModel.swift"; sourceTree = SOURCE_ROOT; };
@@ -169,7 +175,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				22A918252DDB70FA0064CE8D /* Alamofire in Frameworks */,
+				2233870A2DE08DE900BC2CDD /* NVActivityIndicatorView in Frameworks */,
 				22A918272DDB70FA0064CE8D /* AlamofireDynamic in Frameworks */,
+				2233870C2DE08DE900BC2CDD /* NVActivityIndicatorViewExtended in Frameworks */,
 				22284F492DD406D10022D4DD /* Lottie in Frameworks */,
 				22284F4B2DD406D10022D4DD /* Lottie-Dynamic in Frameworks */,
 			);
@@ -462,6 +470,8 @@
 				22BAD8FC2DD65C8000C0817B /* LeaguesViewController.xib */,
 				22BAD9062DD6670D00C0817B /* LeagueTableViewCell.swift */,
 				22BAD9072DD6670D00C0817B /* LeagueTableViewCell.xib */,
+				223387032DE07D3400BC2CDD /* HeaderSearchCollectionReusableView.swift */,
+				223387042DE07D3400BC2CDD /* HeaderSearchCollectionReusableView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -550,6 +560,8 @@
 				22284F4A2DD406D10022D4DD /* Lottie-Dynamic */,
 				22A918242DDB70FA0064CE8D /* Alamofire */,
 				22A918262DDB70FA0064CE8D /* AlamofireDynamic */,
+				223387092DE08DE900BC2CDD /* NVActivityIndicatorView */,
+				2233870B2DE08DE900BC2CDD /* NVActivityIndicatorViewExtended */,
 			);
 			productName = "Sport App";
 			productReference = 22B0B8862DD3AEED00243611 /* Sport App.app */;
@@ -626,6 +638,7 @@
 			packageReferences = (
 				22284F442DD404F30022D4DD /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				22A918232DDB70680064CE8D /* XCRemoteSwiftPackageReference "Alamofire" */,
+				223387082DE08DE900BC2CDD /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
 			);
 			productRefGroup = 22B0B8872DD3AEED00243611 /* Products */;
 			projectDirPath = "";
@@ -656,6 +669,7 @@
 				228C58722DDA626C00D7A5D5 /* TeamCell.xib in Resources */,
 				2273A0BC2DD4D964006E5F7C /* OnboardingViewController.xib in Resources */,
 				2224973A2DD5051F00A0408C /* HomeViewController.xib in Resources */,
+				223387062DE07D3400BC2CDD /* HeaderSearchCollectionReusableView.xib in Resources */,
 				22B730662DDA7DBD00C5A5B7 /* splash.json in Resources */,
 				22C25FE42DD7B837009B80AE /* TeamCollectionViewCell.xib in Resources */,
 				22BAD8FE2DD65C8000C0817B /* LeaguesViewController.xib in Resources */,
@@ -703,6 +717,7 @@
 				22D1A8792DDC666D00B10ADB /* MatchModel.swift in Sources */,
 				2224973D2DD5051F00A0408C /* CarouselCell.swift in Sources */,
 				2253DED62DDCF3EB00E8B20C /* PlayerModel.swift in Sources */,
+				223387052DE07D3400BC2CDD /* HeaderSearchCollectionReusableView.swift in Sources */,
 				2253DED82DDCF4F100E8B20C /* TeamResult.swift in Sources */,
 				221F3CC12DDA38FB00C9C6E5 /* FavoriteViewController.swift in Sources */,
 				22284F422DD3F8400022D4DD /* SplashViewController.swift in Sources */,
@@ -1067,6 +1082,14 @@
 				minimumVersion = 4.5.1;
 			};
 		};
+		223387082DE08DE900BC2CDD /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.0;
+			};
+		};
 		22A918232DDB70680064CE8D /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -1087,6 +1110,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 22284F442DD404F30022D4DD /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = "Lottie-Dynamic";
+		};
+		223387092DE08DE900BC2CDD /* NVActivityIndicatorView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 223387082DE08DE900BC2CDD /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorView;
+		};
+		2233870B2DE08DE900BC2CDD /* NVActivityIndicatorViewExtended */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 223387082DE08DE900BC2CDD /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorViewExtended;
 		};
 		22A918242DDB70FA0064CE8D /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
