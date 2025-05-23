@@ -33,13 +33,13 @@
                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="100" id="ii2-MJ-KxE"/>
                         </constraints>
                     </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noImage" translatesAutoresizingMaskIntoConstraints="NO" id="7pz-iF-71L">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noClub" translatesAutoresizingMaskIntoConstraints="NO" id="7pz-iF-71L">
                         <rect key="frame" x="48.666666666666657" y="77.666666666666671" width="60" height="72.000000000000014"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="72" id="63z-SO-0BP"/>
                         </constraints>
                     </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noImage" translatesAutoresizingMaskIntoConstraints="NO" id="exs-hz-MhQ">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noClub" translatesAutoresizingMaskIntoConstraints="NO" id="exs-hz-MhQ">
                         <rect key="frame" x="300.66666666666669" y="77.666666666666671" width="72" height="72.000000000000014"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="72" id="BHb-tH-a9a"/>
@@ -151,7 +151,7 @@
     <resources>
         <image name="arrow.left" catalog="system" width="128" height="95"/>
         <image name="circle" width="64" height="64"/>
-        <image name="noImage" width="2000" height="2000"/>
+        <image name="noClub" width="500" height="500"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="underPageBackgroundColor">
             <color red="0.70980392156862748" green="0.71764705882352942" blue="0.74117647058823533" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

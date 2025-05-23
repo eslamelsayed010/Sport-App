@@ -125,7 +125,7 @@ class LeagueDetailsCollectionView: UICollectionViewController , LeagueDetailsVie
         
         switch section {
           case 0:
-              return upcomingMatches.isEmpty ? 0 : 1
+              return 1
           case 1:
             return leagueStandings.count
           case 2:
@@ -168,7 +168,7 @@ class LeagueDetailsCollectionView: UICollectionViewController , LeagueDetailsVie
             case 1:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamCell", for: indexPath) as! TeamCell
                 let standings = leagueStandings[indexPath.item]
-                cell.teamLogo.loadImage(from: standings.team_logo ?? "noImage")
+                cell.teamLogo.loadImage(from: standings.team_logo ?? "noClub")
                 cell.TeamName.text = standings.standing_team
                 cell.onImageTapped = {
                     let teamVC = TeamViewController(nibName: "TeamViewController", bundle: nil)
@@ -190,13 +190,13 @@ class LeagueDetailsCollectionView: UICollectionViewController , LeagueDetailsVie
             if let logo1 = match.home_team_logo, !logo1.isEmpty {
                 cell.team1Img.loadImage(from: logo1)
             } else {
-                cell.team1Img.image = UIImage(named: "noImage")
+                cell.team1Img.image = UIImage(named: "noClub")
             }
 
             if let logo2 = match.away_team_logo, !logo2.isEmpty {
                 cell.team2Img.loadImage(from: logo2)
             } else {
-                cell.team2Img.image = UIImage(named: "noImage")
+                cell.team2Img.image = UIImage(named: "noClub")
             }
 
             return cell

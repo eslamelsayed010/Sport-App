@@ -16,7 +16,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="390" height="93"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noImage" translatesAutoresizingMaskIntoConstraints="NO" id="Pg7-xR-h7T">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noPlayer" translatesAutoresizingMaskIntoConstraints="NO" id="Pg7-xR-h7T">
                         <rect key="frame" x="8" y="8" width="75" height="77"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="75" id="VvD-Kt-NFK"/>
@@ -75,6 +75,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="noImage" width="512" height="512"/>
+        <image name="noPlayer" width="224" height="224"/>
     </resources>
 </document>

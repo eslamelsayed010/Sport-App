@@ -79,7 +79,7 @@ extension TeamViewController: UICollectionViewDataSource, UICollectionViewDelega
         let player = teamModel?.players?[indexPath.row]
         
         cell.playerImage.layer.cornerRadius = cell.playerImage.frame.height / 2
-        cell.playerImage.loadImage(from: player?.player_image ?? "noImage")
+        cell.playerImage.loadImage(from: player?.player_image ?? "noPlayer")
         cell.playerName.text = player?.player_name ?? "D.N"
 //        cell.playerNationalty.text = player?.player_country ?? "DN"
         cell.playerNumber.text = player?.player_number ?? "D.N"
@@ -98,9 +98,9 @@ extension TeamViewController: UICollectionViewDelegateFlowLayout{
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderTeamCollectionReusableView.identifier, for: indexPath) as! HeaderTeamCollectionReusableView
         
         
-        header.configure(with: UIImage(named: "noImage")!, name: "Loading")
+        header.configure(with: UIImage(named: "noClub")!, name: "Club")
         
-        header.clubImage.loadImage(from: teamModel?.team_logo ?? "noImage")
+        header.clubImage.loadImage(from: teamModel?.team_logo ?? "noClub")
         header.clubName.text = teamModel?.team_name
         
         header.onBackButtonTapped = { [weak self] in
