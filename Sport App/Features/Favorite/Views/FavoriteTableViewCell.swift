@@ -15,7 +15,12 @@ class FavoriteTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.backgroundColor = .clear
+        let selectedBGView = UIView()
+        selectedBGView.backgroundColor = UIColor(red: 36/255, green: 30/255, blue: 51/255, alpha: 1.0)
+        self.selectedBackgroundView = selectedBGView
     }
+
     
     override func layoutSubviews() {
         super.layoutSubviews()

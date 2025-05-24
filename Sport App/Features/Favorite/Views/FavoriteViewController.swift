@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Lottie
 
 class FavoriteViewController: UIViewController {
     var leagues: [FavoriteModel] = []
@@ -14,9 +15,12 @@ class FavoriteViewController: UIViewController {
     @IBOutlet weak var tabBar: UITabBar!
     @IBOutlet weak var tableView: UITableView!
     
+    private var animationView: LottieAnimationView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupLottieAnimation()
+        
         presenter = FavoritePresenter(view: self)
         presenter.fetchFavorites()
         
@@ -29,11 +33,30 @@ class FavoriteViewController: UIViewController {
 
     }
     
+    func setupLottieAnimation() {
+        animationView = LottieAnimationView(name: "emptyList")
+        
+        let width: CGFloat = 250
+        let height: CGFloat = 250
+        let x = (view.bounds.width - width) / 2
+        let y = (view.bounds.height - height) / 2
+        animationView.frame = CGRect(x: x, y: y, width: width, height: height)
+
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .loop
+        animationView.animationSpeed = 1.0
+        animationView.backgroundColor = .clear
+        animationView.isHidden = true
+        view.addSubview(animationView)
+    }
+
+    
     func setupTableView(){
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: FavoriteTableViewCell.idintefire, bundle: nil), forCellReuseIdentifier: FavoriteTableViewCell.idintefire)
         self.view.backgroundColor = UIColor(red: 26/255.0, green: 20/255.0, blue: 41/255.0, alpha: 1.0)
+        tableView.backgroundColor = UIColor(red: 26/255.0, green: 20/255.0, blue: 41/255.0, alpha: 1.0)
     }
 }
 
@@ -134,11 +157,22 @@ extension FavoriteViewController: FavoriteViewProtocol {
     func fetchFavorites(_ favorites: [FavoriteModel]) {
         self.leagues = favorites
         DispatchQueue.main.async {
+            if self.leagues.isEmpty {
+                self.animationView.isHidden = false
+                self.animationView.play()
+                self.tableView.isHidden = true
+            } else {
+                self.animationView.stop()
+                self.animationView.isHidden = true
+                self.tableView.isHidden = false
+            }
             self.tableView.reloadData()
         }
     }
+
     
     func removeFromFavorite() {
+        presenter.fetchFavorites()
         print("League removed from favorites.")
     }
 }

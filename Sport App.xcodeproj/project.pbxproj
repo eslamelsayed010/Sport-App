@@ -44,6 +44,7 @@
 		228C58732DDA626C00D7A5D5 /* TeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C586A2DDA626C00D7A5D5 /* TeamCell.swift */; };
 		228C58742DDA626C00D7A5D5 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C586C2DDA626C00D7A5D5 /* EventCell.swift */; };
 		228C58752DDA626C00D7A5D5 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 228C586D2DDA626C00D7A5D5 /* EventCell.xib */; };
+		2293B7682DE1E15600BBF897 /* emptyList.json in Resources */ = {isa = PBXBuildFile; fileRef = 2293B7672DE1E15600BBF897 /* emptyList.json */; };
 		22999AED2DD772600055A3BA /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22999AEB2DD772600055A3BA /* TeamViewController.swift */; };
 		22999AEE2DD772600055A3BA /* TeamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22999AEC2DD772600055A3BA /* TeamViewController.xib */; };
 		22999AF12DD777740055A3BA /* HeaderTeamCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22999AEF2DD777740055A3BA /* HeaderTeamCollectionReusableView.swift */; };
@@ -132,6 +133,7 @@
 		228C586A2DDA626C00D7A5D5 /* TeamCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamCell.swift; sourceTree = "<group>"; };
 		228C586C2DDA626C00D7A5D5 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		228C586D2DDA626C00D7A5D5 /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
+		2293B7672DE1E15600BBF897 /* emptyList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = emptyList.json; sourceTree = "<group>"; };
 		22999AEB2DD772600055A3BA /* TeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
 		22999AEC2DD772600055A3BA /* TeamViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeamViewController.xib; sourceTree = "<group>"; };
 		22999AEF2DD777740055A3BA /* HeaderTeamCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTeamCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -424,6 +426,7 @@
 		22B730622DDA7D7C00C5A5B7 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				2293B7672DE1E15600BBF897 /* emptyList.json */,
 				2273A0BD2DD4E00B006E5F7C /* UIColor.swift */,
 				22B0B8952DD3AEEE00243611 /* Assets.xcassets */,
 				22B0B8972DD3AEEE00243611 /* LaunchScreen.storyboard */,
@@ -680,6 +683,7 @@
 				228C58722DDA626C00D7A5D5 /* TeamCell.xib in Resources */,
 				2273A0BC2DD4D964006E5F7C /* OnboardingViewController.xib in Resources */,
 				2224973A2DD5051F00A0408C /* HomeViewController.xib in Resources */,
+				2293B7682DE1E15600BBF897 /* emptyList.json in Resources */,
 				223387062DE07D3400BC2CDD /* HeaderSearchCollectionReusableView.xib in Resources */,
 				22B730662DDA7DBD00C5A5B7 /* splash.json in Resources */,
 				22C25FE42DD7B837009B80AE /* TeamCollectionViewCell.xib in Resources */,
