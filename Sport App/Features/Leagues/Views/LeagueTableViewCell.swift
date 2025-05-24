@@ -56,17 +56,16 @@ class LeagueTableViewCell: UITableViewCell {
             tag = currentTag
 
             URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
-                guard let self = self,
-                      self.tag == currentTag else { return }
-
-                DispatchQueue.main.async {
-                    if let data = data, let image = UIImage(data: data) {
-                        self.leagueImage.image = image
-                    } else {
-                        self.leagueImage.image = UIImage(named: "noImage")
-                    }
-                }
-            }.resume()
+                           guard let self = self else { return }
+                           DispatchQueue.main.async {
+                               guard self.tag == currentTag else { return }
+                               if let data = data, let image = UIImage(data: data) {
+                                   self.leagueImage.image = image
+                               } else {
+                                   self.leagueImage.image = UIImage(named: "noImage")
+                               }
+                           }
+                       }.resume()
         }
     }
 

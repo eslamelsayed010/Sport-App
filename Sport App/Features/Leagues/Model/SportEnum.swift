@@ -12,6 +12,10 @@ enum Sport: String {
     case basketball
     case tennis
     case cricket
+    
+    var isTennis: Bool {
+            return self == .tennis
+        }
 
     var url: String {
         return "https://apiv2.allsportsapi.com/\(self.rawValue)/?met=Leagues&APIkey=\(APIKeys.main)"
