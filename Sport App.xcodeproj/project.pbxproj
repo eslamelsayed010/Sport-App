@@ -25,6 +25,7 @@
 		223387062DE07D3400BC2CDD /* HeaderSearchCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 223387042DE07D3400BC2CDD /* HeaderSearchCollectionReusableView.xib */; };
 		2233870A2DE08DE900BC2CDD /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 223387092DE08DE900BC2CDD /* NVActivityIndicatorView */; };
 		2233870C2DE08DE900BC2CDD /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = 2233870B2DE08DE900BC2CDD /* NVActivityIndicatorViewExtended */; };
+		2253807F2DE16EA90053BBFE /* TennisMatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2253807E2DE16EA90053BBFE /* TennisMatchModel.swift */; };
 		2253DED02DDCD9FA00E8B20C /* StandingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2253DECF2DDCD9FA00E8B20C /* StandingModel.swift */; };
 		2253DED22DDCDBC400E8B20C /* StandingsResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2253DED12DDCDBC400E8B20C /* StandingsResult.swift */; };
 		2253DED42DDCF35F00E8B20C /* TeamModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2253DED32DDCF35F00E8B20C /* TeamModel.swift */; };
@@ -112,6 +113,7 @@
 		22284F412DD3F8400022D4DD /* SplashViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
 		223387032DE07D3400BC2CDD /* HeaderSearchCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSearchCollectionReusableView.swift; sourceTree = "<group>"; };
 		223387042DE07D3400BC2CDD /* HeaderSearchCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderSearchCollectionReusableView.xib; sourceTree = "<group>"; };
+		2253807E2DE16EA90053BBFE /* TennisMatchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TennisMatchModel.swift; sourceTree = "<group>"; };
 		2253DECF2DDCD9FA00E8B20C /* StandingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingModel.swift; sourceTree = "<group>"; };
 		2253DED12DDCDBC400E8B20C /* StandingsResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingsResult.swift; sourceTree = "<group>"; };
 		2253DED32DDCF35F00E8B20C /* TeamModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeamModel.swift; path = "Sport App/Features/Team/Model/TeamModel.swift"; sourceTree = SOURCE_ROOT; };
@@ -238,6 +240,15 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
+		2253807D2DE16C930053BBFE /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				22B730672DDA7E2D00C5A5B7 /* CoreData */,
+				22A9181F2DDB6F300064CE8D /* Networking */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		2273A0B52DD4D812006E5F7C /* Features */ = {
 			isa = PBXGroup;
 			children = (
@@ -341,14 +352,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		22A9181F2DDB6F300064CE8D /* Shared */ = {
+		22A9181F2DDB6F300064CE8D /* Networking */ = {
 			isa = PBXGroup;
 			children = (
 				22A918212DDB6F5B0064CE8D /* NetworkManager.swift */,
 				22CE33072DDE6DE600252094 /* CheckInternet.swift */,
 				22CEC1E32DDFA77900CBF15C /* NetworkRequesting.swift */,
 			);
-			path = Shared;
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		22B0B87D2DD3AEED00243611 = {
@@ -374,9 +385,8 @@
 		22B0B8882DD3AEED00243611 /* Sport App */ = {
 			isa = PBXGroup;
 			children = (
-				22A9181F2DDB6F300064CE8D /* Shared */,
+				2253807D2DE16C930053BBFE /* Data */,
 				22B0B89A2DD3AEEE00243611 /* Info.plist */,
-				22B730672DDA7E2D00C5A5B7 /* CoreData */,
 				22B730622DDA7D7C00C5A5B7 /* Resource */,
 				22B730612DDA7D1400C5A5B7 /* App */,
 				2273A0B52DD4D812006E5F7C /* Features */,
@@ -526,6 +536,7 @@
 				22D1A8782DDC666D00B10ADB /* MatchModel.swift */,
 				2253DECF2DDCD9FA00E8B20C /* StandingModel.swift */,
 				2253DED12DDCDBC400E8B20C /* StandingsResult.swift */,
+				2253807E2DE16EA90053BBFE /* TennisMatchModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -718,6 +729,7 @@
 				2224973D2DD5051F00A0408C /* CarouselCell.swift in Sources */,
 				2253DED62DDCF3EB00E8B20C /* PlayerModel.swift in Sources */,
 				223387052DE07D3400BC2CDD /* HeaderSearchCollectionReusableView.swift in Sources */,
+				2253807F2DE16EA90053BBFE /* TennisMatchModel.swift in Sources */,
 				2253DED82DDCF4F100E8B20C /* TeamResult.swift in Sources */,
 				221F3CC12DDA38FB00C9C6E5 /* FavoriteViewController.swift in Sources */,
 				22284F422DD3F8400022D4DD /* SplashViewController.swift in Sources */,

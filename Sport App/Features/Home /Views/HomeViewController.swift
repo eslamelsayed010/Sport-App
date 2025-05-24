@@ -9,13 +9,14 @@ import UIKit
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var tabBar: UITabBar!
-    let sports = ["football", "basketball", "tennis", "baseball"]
+    let sports = ["football", "basketball", "tennis", "cricket"]
     
     @IBOutlet weak var collectionView: UICollectionView!
     let layout = UICollectionViewFlowLayout()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         setupLayout()
         setupCollectionView()

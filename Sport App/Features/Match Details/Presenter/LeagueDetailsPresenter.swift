@@ -48,51 +48,69 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
         let fromRecent = formatter.string(from: sevenDaysAgo)
         let toRecent = formatter.string(from: today)
         
-        let eventDateFormatter = DateFormatter()
-        eventDateFormatter.dateFormat = "yyyy-MM-dd"
-        eventDateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        
-        NetworkManager.shared.fetchFixtures(for: sport, leagueId: leagueId, from: fromUpcoming, to: toUpcoming) { [weak self] result in
-            switch result {
-            case .success(let matches):
-                let sorted = matches.sorted {
-                    guard
-                        let date1String = $0.event_date,
-                        let date2String = $1.event_date,
-                        let date1 = eventDateFormatter.date(from: date1String),
-                        let date2 = eventDateFormatter.date(from: date2String)
-                    else {
-                        return false
+        if sport.isTennis {
+            NetworkManager.shared.fetchTennisFixtures(leagueId: leagueId, from: fromUpcoming, to: toUpcoming) { [weak self] result in
+                switch result {
+                case .success(let matches):
+                    let sorted = matches.sorted {
+                        guard let d1 = $0.event_date, let d2 = $1.event_date else { return false }
+                        return d1 < d2
                     }
-                    return date1 < date2
+                    if let nearest = sorted.first {
+                        self?.view?.showUpcomingMatches([nearest.toMatch()])
+                    } else {
+                        self?.view?.showUpcomingMatches([])
+                    }
+                case .failure(let error):
+                    self?.view?.showError("Upcoming Tennis matches fetch failed: \(error.localizedDescription)")
                 }
-                
-                if let nearestMatch = sorted.first {
-                    self?.view?.showUpcomingMatches([nearestMatch])
-                } else {
-                    self?.view?.showUpcomingMatches([])
-                }
-                
-            case .failure(let error):
-                self?.view?.showError("Upcoming matches fetch failed: \(error.localizedDescription)")
             }
-        }
-        
-        NetworkManager.shared.fetchFixtures(for: sport, leagueId: leagueId, from: fromRecent, to: toRecent) { [weak self] result in
-            switch result {
-            case .success(let matches):
-                let sorted = matches.sorted {
-                    guard let date1 = $0.event_date, let date2 = $1.event_date,
-                          let d1 = eventDateFormatter.date(from: date1),
-                          let d2 = eventDateFormatter.date(from: date2) else { return false }
-                    return d1 > d2
+            
+            NetworkManager.shared.fetchTennisFixtures(leagueId: leagueId, from: fromRecent, to: toRecent) { [weak self] result in
+                switch result {
+                case .success(let matches):
+                    let sorted = matches.sorted {
+                        guard let d1 = $0.event_date, let d2 = $1.event_date else { return false }
+                        return d1 > d2
+                    }
+                    let last15 = Array(sorted.prefix(15)).map { $0.toMatch() }
+                    self?.view?.showRecentMatches(last15)
+                case .failure(let error):
+                    self?.view?.showError("Recent Tennis matches fetch failed: \(error.localizedDescription)")
                 }
-                
-                let last15 = Array(sorted.prefix(15))
-                self?.view?.showRecentMatches(last15)
-                
-            case .failure(let error):
-                self?.view?.showError(error.localizedDescription)
+            }
+        } else {
+            NetworkManager.shared.fetchFixtures(for: sport, leagueId: leagueId, from: fromUpcoming, to: toUpcoming) { [weak self] result in
+                switch result {
+                case .success(let matches):
+                    let sorted = matches.sorted {
+                        guard
+                            let date1String = $0.event_date,
+                            let date2String = $1.event_date,
+                            let date1 = formatter.date(from: date1String),
+                            let date2 = formatter.date(from: date2String)
+                        else { return false }
+                        return date1 < date2
+                    }
+                    self?.view?.showUpcomingMatches(Array(sorted.prefix(1)))
+                case .failure(let error):
+                    self?.view?.showError("Upcoming matches fetch failed: \(error.localizedDescription)")
+                }
+            }
+            
+            NetworkManager.shared.fetchFixtures(for: sport, leagueId: leagueId, from: fromRecent, to: toRecent) { [weak self] result in
+                switch result {
+                case .success(let matches):
+                    let sorted = matches.sorted {
+                        guard let date1 = $0.event_date, let date2 = $1.event_date,
+                              let d1 = formatter.date(from: date1),
+                              let d2 = formatter.date(from: date2) else { return false }
+                        return d1 > d2
+                    }
+                    self?.view?.showRecentMatches(Array(sorted.prefix(15)))
+                case .failure(let error):
+                    self?.view?.showError("Recent matches fetch failed: \(error.localizedDescription)")
+                }
             }
         }
         
@@ -100,12 +118,12 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
             switch result {
             case .success(let standings):
                 self?.view?.showLeagueStanding(standings)
-                
             case .failure(let error):
                 self?.view?.showError(error.localizedDescription)
             }
         }
     }
+
     
     
     func addToFavorites() {
@@ -172,4 +190,19 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
     }
 
     
+}
+
+
+extension TennisMatch {
+    func toMatch() -> Match {
+        return Match(
+            event_key: self.event_key,
+            event_date: self.event_date,
+            event_time: self.event_time,
+            event_home_team: self.event_first_player,
+            event_away_team: self.event_second_player,
+            home_team_logo: self.event_final_result,
+            away_team_logo: nil,
+            event_final_result: nil)
+    }
 }

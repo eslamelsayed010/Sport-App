@@ -39,6 +39,18 @@ class NetworkManager {
             }
         }
     }
+    
+    func fetchTennisFixtures(leagueId: Int, from: String, to: String, completion: @escaping (Result<[TennisMatch], Error>) -> Void) {
+        let url = "https://apiv2.allsportsapi.com/tennis/?met=Fixtures&APIkey=\(APIKeys.main)&from=\(from)&to=\(to)&leagueId=\(leagueId)"
+        requester.request(url, responseType: TennisMatchesResponse.self) { result in
+            switch result {
+            case .success(let matchResponse):
+                completion(.success(matchResponse.result))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 
     func fetchLeagueStanding(for sport: Sport, leagueId: Int, completion: @escaping (Result<[StandingModel], Error>) -> Void) {
         let url = "https://apiv2.allsportsapi.com/\(sport.rawValue)/?&met=Standings&leagueId=\(leagueId)&APIkey=\(APIKeys.main)"
