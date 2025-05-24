@@ -55,12 +55,12 @@ leagues, events, and teams. It also features Core Data for managing user favorit
 - **Testing:** Unit Tests included
 - **Design Patterns:** Applied as per feature needs
 
-##👥 Team Members
+## 👥 Team Members
 
 - [Nada Ali](https://github.com/nada263204)
 - [Eslam El-Sayed](https://github.com/eslamelsayed010)
 
-##📋 Project Board
+## 📋 Project Board
 Track our progress on [Trello](https://trello.com/b/QlvLYev5/sports-ios-project)
 
 ## 🚀 Getting Started
