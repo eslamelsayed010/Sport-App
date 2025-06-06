@@ -1,59 +1,62 @@
-# 🏅 Sports App (iOS - Swift)
+# 🏅 Sports App
 
-This is a sports-focused iOS application built using Swift and UIKit. The app utilizes [TheSportsDB API](https://allsportsapi.com/) to fetch and display information about various sports,
-leagues, events, and teams. It also features Core Data for managing user favorites and follows modern iOS development practices including MVC design patterns, unit testing, and an elegant, responsive UI.
+A native iOS application that offers comprehensive coverage across **Football, Tennis, Basketball**, and **Cricket**, designed with a smooth and intuitive user experience in mind.
 
-## 📱 Features
+---
 
-### 🏠 Main Interface
-- **Tab 1: All Sports**
-  - Displays all available sports in a `UICollectionView` (2 items per row).
-  - Each item includes:
-    - Sport thumbnail (`strSportThumb`)
-    - Sport name (`strSport`)
-  - Navigation to **Leagues ViewController** on sport selection.
+## 📲 Features
 
-- **Tab 2: Favorite Leagues**
-  - Uses **Core Data** to persist user's favorite leagues.
-  - UI similar to Leagues screen.
-  - If user is offline and clicks an item, shows a “No Internet” alert.
-  - If online, navigates to **LeagueDetails ViewController**.
+- 🏆 Displays **leagues**, **teams**, **match results**, and **upcoming fixtures**
+- 📁 Grouped **favorite leagues** by sport
+- 📄 Detailed **team profiles**
+- 📶 Seamless **offline access** with smart connectivity handling
+- 🧭 Clean navigation with UIKit components and custom Nib files
+- ✅ Smooth and responsive UI built with performance in mind
 
-### 🏆 Leagues ViewController
-- A `UITableViewController` titled **Leagues**.
-- Each cell includes:
-  - Circular league badge (`strBadge`)
-  - League name (`strLeague`)
-- Tap to navigate to **LeagueDetails ViewController**.
+---
 
-### 📋 LeagueDetails ViewController
-- Add/remove league from favorites via top-right button.
-- Divided into three sections:
-  1. **Upcoming Events**:
-     - Horizontal `UICollectionView`
-     - Displays event name, date, time, and team images.
-  2. **Latest Events**:
-     - Vertical `UICollectionView`
-     - Displays team names, scores, date, time, and images.
-  3. **Teams**:
-     - Horizontal `UICollectionView`
-     - Circular team logos
-     - Tap navigates to **TeamDetails ViewController**
+## 🧱 Architecture
 
-### 👥 TeamDetails ViewController
-- Shows essential team details in an elegant layout.
-- UI design is flexible but should be visually appealing.
+The app follows the **MVP (Model-View-Presenter)** architecture to ensure clean separation of concerns and ease of testing and maintenance.
 
-## ⚙️ Technologies Used
+- **Model**: Data entities and API layer
+- **View**: UIKit-based reusable components using XIBs/Nib files
+- **Presenter**: Handles UI logic and data transformation
 
-- **Language:** Swift
-- **Architecture:** MVC
-- **UI Framework:** UIKit
-- **Networking:** [Alamofire](https://github.com/Alamofire/Alamofire)
-- **Local Storage:** Core Data
-- **API:** [TheSportsDB](https://allsportsapi.com/)
-- **Testing:** Unit Tests included
-- **Design Patterns:** Applied as per feature needs
+---
+
+## 🛠️ Technologies Used
+
+| Technology     | Purpose                          |
+|----------------|----------------------------------|
+| Swift          | Core programming language        |
+| UIKit          | UI development                   |
+| Alamofire      | Networking and RESTful API calls |
+| Core Data      | Local data persistence           |
+| Reachability   | Network status monitoring        |
+| Nib Files      | Modular and reusable UI views    |
+| XCTest         | Unit testing                     |
+
+---
+
+## 📂 Project Structure (Simplified)
+SportApp/
+│
+├── Models/ # Data models for leagues, teams, matches
+├── Views/ # XIBs/Nibs and UI components
+├── Presenters/ # Presenter classes for each screen
+├── Services/ # API service layer using Alamofire
+├── Persistence/ # Core Data setup and management
+├── Utils/ # Reachability, constants, helpers
+└── AppDelegate.swift # Application entry point
+
+---
+
+## 🎥 Demo
+
+📽️ Watch the full demo on [LinkedIn](https://www.linkedin.com/posts/eslam-elsayed-a3b183264_excited-to-share-a-major-milestone-in-my-activity-7332695726839222272-lIde/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEDPLg8BBULkCm0f5lZEYq8VEACSXorKZeI)
+
+---
 
 ## 👥 Team Members
 
@@ -65,7 +68,30 @@ Track our progress on [Trello](https://trello.com/b/QlvLYev5/sports-ios-project)
 
 ## 🚀 Getting Started
 
-1. Clone this repo:
-   ```bash
-   git clone https://github.com/eslamelsayed010/Sport-App.git
+### Prerequisites
+
+- Xcode 14+
+- iOS 13.0+
+- Swift 5+
+
+### Installation
+
+1. Clone the repo:
+    ```bash
+    git clone https://github.com/eslamelsayed010/Sport-App.git
+    cd ios-sport-app
+    ```
+2. Open `SportApp.xcodeproj` in Xcode
+3. Run on a simulator or physical device
+
+---
+
+## ✅ Testing
+
+- Unit tests are implemented using **XCTest**
+- Run tests via Xcode → Product → Test or `⌘ + U`
+
+---
+
+
 
